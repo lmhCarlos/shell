@@ -14,8 +14,6 @@ comand | xargs
 cat hello.txt | args
 ~~~
 
-
-
 ![image-20240218233947211](/Users/apple/Library/Application Support/typora-user-images/image-20240218233947211.png)
 
 
@@ -28,8 +26,6 @@ cat hello.txt | args
 cat Hello.txt | xargs -n 3
 ~~~
 
-
-
 ![image-20240218233837711](/Users/apple/Library/Application Support/typora-user-images/image-20240218233837711.png)
 
 
@@ -39,6 +35,13 @@ cat Hello.txt | xargs -n 3
 -d选项为输入一个定制的定界符
 
 结合-n选项，将输入划分为多行，而每行包行两个参数
+
+~~~shell
+echo "splitxsplitxsplitxsplit" | xargs -d x
+echo "splitxsplitxsplitxsplit" | xargs -d x -n 2
+~~~
+
+
 
 ![image-20240218235004721](/Users/apple/Library/Application Support/typora-user-images/image-20240218235004721.png)
 
@@ -51,6 +54,14 @@ cat Hello.txt | xargs -n 3
 定义一个脚本cecho.sh, 脚本内容时 $*'#',内容被传进去后，打印参数以#号结尾；
 
 -I 指定一个替换字符串；
+
+~~~
+cat read.txt | xargs -n 1 ./cecho.sh
+cat read.txt | xargs -n 2 ./cecho.sh
+cat read.txt | xargs -I {} ./cecho.sh -p {} -1
+~~~
+
+
 
 ![image-20240219002454630](/Users/apple/Library/Application Support/typora-user-images/image-20240219002454630.png)
 
